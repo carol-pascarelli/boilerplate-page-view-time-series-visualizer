@@ -16,24 +16,20 @@ df = df[(df['value'] >= df['value'].quantile(0.025)) & (df['value'] <= df['value
 months_order = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 def draw_line_plot():
-    # Criar o gráfico de linha para mostrar as visualizações diárias de página ao longo do tempo
+    # Desenha o gráfico de linha
     fig, ax = plt.subplots(figsize=(14, 7))
-    
-    # Plotando as visualizações com a linha vermelha
     ax.plot(df.index, df['value'], color='red', label='Page Views')
     
-    # Definir o título e os rótulos dos eixos
-    ax.set_title("Daily Page Views on freeCodeCamp Forum (2016-2019)")
-    ax.set_xlabel("Date")
+    # Definir título e rótulos
+    ax.set_title("Daily freeCodeCamp Forum Page Views 5/2016-12/2019")
+    ax.set_xlabel("Date")  # Certifique-se de que o rótulo seja "Date"
     ax.set_ylabel("Page Views")
-    
-    # Exibir a legenda
     ax.legend()
 
-    # Salvar a figura gerada como arquivo PNG
+    # Salvar e retornar a figura
     fig.savefig('line_plot.png')
-    
     return fig
+
 
 def draw_bar_plot():
     # Criar uma cópia do DataFrame original para o gráfico de barras
@@ -56,7 +52,7 @@ def draw_bar_plot():
     df_pivot.plot(kind='bar', ax=ax)
     
     # Definir os rótulos dos eixos e a legenda
-    ax.set_xlabel("Year")
+    ax.set_xlabel("Years")
     ax.set_ylabel("Average Page Views")
     ax.legend(title="Months", labels=months_order, loc='upper left')
 
